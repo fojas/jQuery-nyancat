@@ -1,7 +1,7 @@
 (function($){
 
-  var audio = '<audio autoplay="autoplay" loop="loop"><source src="nyancat.mp3" type="audio/mp3" /></audio>'
-    , audioAdded = 0
+  var audio = '<audio autoplay="autoplay" loop="loop"><source src="http://nyan.cat/music/original.mp3" type="audio/mp3" /></audio>'
+    , audioNeeded = 1
     , frames = [
       "\n \n `&#183;.,&#184;,.&#183;*&#175;`&#183;.,&#184;,.&#183;*&#183;.&#9581;&#9473;&#9473;&#9473;&#9582;"+
       "\n `&#183;.,&#184;,.&#183;*&#175;`&#183;.,&#184;,.&#183;*&#183;.|:::::/\\_|\\"+
@@ -14,10 +14,10 @@
       "\n .,&#184;,.&#183;*&#175;`&#183;.,&#184;,.&#183;*&#183;,&#184;&#184;u-u&#9473;-u-u",
     ];
 
-  $.fn.nyanit = function(){
+  $.fn.nyanit = function(mute){
     var i = 0,pre = $('<pre />'), el = $(this).html(pre);
-    if(!audioAdded){ el.append(audio); }
-    audioAdded = 1;
+    if(audioNeeded || !mute){ el.append(audio); }
+    audioAdded = 0;
     setInterval(function(){
       pre.html(frames[(i = (i + 1 )% frames.length)]);
     },400);
